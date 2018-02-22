@@ -1,31 +1,32 @@
 // @flow
 
-import React from 'react'
+import * as React from 'react'
 import {
   Text,
 } from 'react-native'
 
-type Props = {}
-export default class ErrorBoundary extends React.Component<Props> {
-  constructor(props) {
+type Props = {
+  children: React.Node,
+}
+type State = {
+  error?: Error,
+  info?: string,
+}
+export default class ErrorBoundary extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props)
-    this.state = {
-      hasError: false,
-      error: null,
-      info: null,
-    }
+    this.state = {}
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: string) {
     this.setState({
-      hasError: true,
       error,
       info,
     })
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.error) {
       console.log(this.state.error)
       console.log(this.state.info)
       return <Text>Error</Text>

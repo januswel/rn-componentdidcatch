@@ -7,18 +7,14 @@ import {
   View,
 } from 'react-native'
 import ErrorBoundary from '../lib/error-boundary'
+import Screen from './screen'
 
-type Props = {}
 export default () => (
   <View style={styles.container}>
     <ErrorBoundary>
-      <ErrorRaiser />
+      <Screen />
     </ErrorBoundary>
   </View>
-)
-
-const ErrorRaiser = () => (
-  <Text>{unexist}</Text>
 )
 
 const styles = StyleSheet.create({
