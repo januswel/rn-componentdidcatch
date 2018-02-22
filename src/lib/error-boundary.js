@@ -29,7 +29,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.error) {
       console.log(this.state.error)
       console.log(this.state.info)
-      return <Text>Error</Text>
+      return <Text>{this.state.error.message}</Text>
     }
 
     return this.props.children
